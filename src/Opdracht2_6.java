@@ -1,6 +1,10 @@
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.GeneralPath;
+
 import javax.swing.*;
 
 
@@ -26,7 +30,7 @@ public class Opdracht2_6 extends JFrame
         JPanel panel = new JPanel(new BorderLayout()); 
 		JPanel topPanel = new JPanel(new FlowLayout());
 		panel.add(topPanel, BorderLayout.NORTH);
-		panel.setBackground(Color.WHITE);
+		//panel.setBackground(Color.black);
 		JLabel statusLabel = new JLabel("Draw a Line");
         topPanel.add(statusLabel);
         
@@ -44,36 +48,38 @@ public class Opdracht2_6 extends JFrame
 
 	public class Opdracht2_6a extends JPanel 
 	{
+		private GeneralPath myShape = new GeneralPath();
+		
 		public Opdracht2_6a()
 		{
-			setPreferredSize(new Dimension(600, 400));
-			setBackground(Color.white);
-		}
+			setPreferredSize(new Dimension(600, 600));					
 		
+			myShape = new GeneralPath();
+			myShape.moveTo(0f, -1f);
+			myShape.curveTo(0, -1, -2.5, 0, 0, 1);
+			myShape.moveTo(0f, 1f);
+			myShape.quadTo(-1, 0, 0, -1);
+		
+		}
 		
 		public void paintComponent(Graphics g) 
 		{
+			super.paintComponents(g);
 		    Graphics2D g2 = (Graphics2D) g;
+		    AffineTransform tr = new AffineTransform();
+			tr.setToScale(100, 100);
+		    Shape sh = tr.createTransformedShape(myShape);
+			g2.translate(300, 200);
+			
+			g2.setColor(Color.black);
+			//g2.fill(sh);
+			g2.draw(sh);
 		    
-		    g2.drawArc(100, 100, 400, 400, 0, 360);
-		    g2.fillArc(100, 100, 400, 400, 270, 180);
-		    
-		    g2.drawArc(200, 300, 200, 200, 90, 180);
-		    g2.fillArc(200, 300, 200, 200, 90, 180);
-		    		    	    
-		    g2.drawArc(200, 100, 200, 200, 270, 180);
-		    g2.setColor(Color.white);
-		    g2.fillArc(200, 100, 200, 200, 270, 180);	    
-		    
-		    g2.drawArc(300,400,20,20,0,360);
-		    g2.fillArc(300,400,20,20,0,360);
-		    
-		    g2.setColor(Color.black);
-		    g2.drawArc(300,200,20,20,0,360);
-		    g2.fillArc(300,200,20,20,0,360);		   
+		    		   
 		}
 	}
 
 }
+
 
 
