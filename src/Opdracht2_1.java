@@ -52,15 +52,17 @@ public class Opdracht2_1 extends JFrame
 		}
 		
 		
-		public void paintComponent(Graphics g,int t) 
+		public void paintComponent(Graphics g) 
 		{
 		    Graphics2D g2 = (Graphics2D) g;
+		    int t = 7;
+		    g2.translate(getWidth()/2, getHeight()/2);
 		    
 		    if(t < 8)
 		    {
 		    	int x = (int)Math.pow(t, 2);
 		    	int y = (int)Math.pow(t, 3);
-		        g2.drawOval(x, y, 200, 100);    
+		        g2.drawLine(0, 0, x , y);    
 		    }
 		    else
 		    	System.out.println("kan niet");

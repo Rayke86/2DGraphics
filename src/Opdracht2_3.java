@@ -52,9 +52,10 @@ public class Opdracht2_3 extends JFrame
 		public void paintComponent(Graphics g) 
 		{
 		    Graphics2D g2 = (Graphics2D) g;
-		    g2.drawRect(195, 175, 200, 200);
-		    g2.rotate(Math.PI/4, 400, 450);
-		    g2.drawRect(100, 300, 200, 200);
+		    g2.translate(200, 200);	
+		    g2.drawRect(0, 0, 200, 200);
+		    g2.rotate(Math.PI/4, 0, 0);
+		    g2.drawRect(0, 0, 200, 200);
 		    
 		}
 	}

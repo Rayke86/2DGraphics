@@ -49,16 +49,18 @@ public class Opdracht2_2 extends JFrame
 		}
 		
 		
-		public void paintComponent(Graphics g,int t) 
+		public void paintComponent(Graphics g) 
 		{
 		    Graphics2D g2 = (Graphics2D) g;
+		    int t = 4;
+		    g2.translate(getWidth()/2, getHeight()/2);
 		    
 		    if(t <= 8 && t >= 0)
 		    {
 		    	int x = (int)((20 * t) * (Math.cos(t)));
 		    	int y = (int)((20 * t) * (Math.sin(t)));
 		    			    	
-		        g2.drawOval(x, y, 200, 100);    
+		        g2.drawLine(0, 0, x , y );    
 		    }
 		    else
 		    	System.out.println("kan niet");
